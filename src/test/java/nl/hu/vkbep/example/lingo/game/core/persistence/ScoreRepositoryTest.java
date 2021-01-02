@@ -1,6 +1,5 @@
 package nl.hu.vkbep.example.lingo.game.core.persistence;
 
-import nl.hu.vkbep.example.lingo.game.core.application.ScoreService;
 import nl.hu.vkbep.example.lingo.game.core.domain.Score;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
