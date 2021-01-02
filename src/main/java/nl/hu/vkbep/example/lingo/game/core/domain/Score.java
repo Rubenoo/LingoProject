@@ -28,7 +28,7 @@ public class Score {
 
     }
 
-    public boolean beurdenOverschreden(){// kan korter
+    public boolean beurdenOverschreden(){
         if(beurtenTotaal >= 5 && !rondenEenGehaald){
             return true;
         }else if(rondenEenGehaald && (beurtenTotaal - beurtenRondenEen) >= 5){
@@ -92,4 +92,3 @@ public class Score {
         beurtenTotaal++;
     }
 }
-//http://zetcode.com/springboot/postgresql/
