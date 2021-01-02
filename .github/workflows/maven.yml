@@ -21,15 +21,21 @@ jobs:
       with:
         java-version: 13
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Codecov
-
-      uses: codecov/codecov-action@v1.1.1
+      run: mvn -B package --file pom.xml 
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v1
       with:
-        # User defined upload name. Visible in Codecov UI
-        name: Lingo Project
-        # Repository upload token - get it from codecov.io. Required only for private repositories
-        token: fef694a8-6643-45c7-82ed-50adda621549
-        # Path to coverage file to upload
-        file: /codecov# optional
-        # Comma-separated list of files to upload
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Build and analyze
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
