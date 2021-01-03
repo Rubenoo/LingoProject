@@ -25,35 +25,35 @@ public class LingoWord {
     public Score getScore(){
         return score;
     }
-    public int volgendeRonde(){
-        return this.score.volgendeRonde();
+    public int nextRound(){
+        return this.score.nextRound();
     }
-    public String nieuweRonde(String word){
+    public String newRound(String word){
         this.word = word;
         this.wordArray.clear();
         this.wordLength = word.length();
         for(char c : word.toCharArray()){
             wordArray.add(c);
         }
-        score.volgendeRondeGestart();
+        score.nextRoundStarted();
         return "Deze ronden word er met " + wordLength + " letters gespeeld.\nDe eerste letter is: " + getFirstCharacterOfWord();
     }
 
     public String play(String word) {
-        if (validateInputWord(word) && validateTime() && !score.beurdenOverschreden() && !score.spelGewonnen()){
+        if (validateInputWord(word) && validateTime() && !score.turnsExceeded() && !score.gameFinished()){
             setInputWord(word);
             generateFeedback();
             localDateTimeLastPlay = LocalDateTime.now();
-            score.goedeBeurd();
+            score.validTurn();
             return getFeedback();
         }else if (!validateInputWord(word)){
             localDateTimeLastPlay = LocalDateTime.now();
             return "Geef alleen woorden met de lengte: " + wordLength + " , en het word moet in kleine letters zijn zonder speciale tekens of spaties";
         }else if (!validateTime()){
-            score.ongeldigeBeurd();
+            score.invalidTurn();
             localDateTimeLastPlay = LocalDateTime.now();
             return "Oei je hebt niet binnen de tijd geantwoord!";
-        }else if(score.spelGewonnen()){
+        }else if(score.gameFinished()){
             return "Gefeliciteerd! je heb gewonnen!\n" + score.getScores();
         }else{
             return "Oei je hebt niet binnen 5 ronden het woord geraden!\nHet woord was: " + word + "\n" + score.getScores();
@@ -103,8 +103,8 @@ public class LingoWord {
         }
         inputWordFeedback.removeIf(feedback -> feedback.equals("Correct"));
         if(inputWordFeedback.size() == 0){
-            score.goedeBeurd();
-            score.woordGeraden();
+            score.validTurn();
+            score.wordQuessed();
             return "Gefeliciteerd, het woord was: " + word + ", en dit heb je goed geraden! Op naar de volgende ronden!";
         }
         return resultString;

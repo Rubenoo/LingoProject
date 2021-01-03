@@ -1,6 +1,5 @@
 package nl.hu.vkbep.example.lingo.game.core.domain;
 
-import nl.hu.vkbep.example.lingo.game.core.domain.Score;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,56 +8,56 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 public class ScoreTest {
     @Test
-    void beurtOverschredenTestHappyPath(){
+    void turnsExceededTestHappyPath(){
         Score scoreTest = new Score();
-        int aantalRondesOmBeurtNietTeOverschrijden = 4;
-        for (int i = 0; i < aantalRondesOmBeurtNietTeOverschrijden; i++){
-            scoreTest.goedeBeurd();
+        int numberOfValidTurns = 4;
+        for (int i = 0; i < numberOfValidTurns; i++){
+            scoreTest.validTurn();
         }
-        assertFalse("Aantal beurten niet overschreden", scoreTest.beurdenOverschreden());
-        scoreTest.woordGeraden();
-        for (int i = 0; i < aantalRondesOmBeurtNietTeOverschrijden; i++){
-            scoreTest.goedeBeurd();
+        assertFalse("Aantal beurten niet overschreden", scoreTest.turnsExceeded());
+        scoreTest.wordQuessed();
+        for (int i = 0; i < numberOfValidTurns; i++){
+            scoreTest.validTurn();
         }
-        assertFalse("Aantal beurten niet overschreden want ronde 1 is gehaald", scoreTest.beurdenOverschreden());
-        scoreTest.woordGeraden();
-        for (int i = 0; i < aantalRondesOmBeurtNietTeOverschrijden; i++){
-            scoreTest.goedeBeurd();
+        assertFalse("Aantal beurten niet overschreden want ronde 1 is gehaald", scoreTest.turnsExceeded());
+        scoreTest.wordQuessed();
+        for (int i = 0; i < numberOfValidTurns; i++){
+            scoreTest.validTurn();
         }
-        assertFalse("Aantal beurten niet overschreden want ronde 1 en 2 is gehaald", scoreTest.beurdenOverschreden());
+        assertFalse("Aantal beurten niet overschreden want ronde 1 en 2 is gehaald", scoreTest.turnsExceeded());
     }
     @Test
-    void beurtOverschredenTestUnHappyPath(){
+    void turnsExceededTestUnHappyPath(){
         Score scoreTest = new Score();
-        int aantalRondesOmBeurtTeOverschrijden = 5;
-        for (int i = 0; i < aantalRondesOmBeurtTeOverschrijden; i++){
-            scoreTest.goedeBeurd();
+        int numberOfInvalidTurns = 5;
+        for (int i = 0; i < numberOfInvalidTurns; i++){
+            scoreTest.validTurn();
         }
-        assertTrue("Aantal beurten overschreden", scoreTest.beurdenOverschreden());
-        scoreTest.woordGeraden();
-        for (int i = 0; i < aantalRondesOmBeurtTeOverschrijden; i++){
-            scoreTest.goedeBeurd();
+        assertTrue("Aantal beurten overschreden", scoreTest.turnsExceeded());
+        scoreTest.wordQuessed();
+        for (int i = 0; i < numberOfInvalidTurns; i++){
+            scoreTest.validTurn();
         }
-        assertTrue("Aantal beurten overschreden want ronde 1 is gehaald", scoreTest.beurdenOverschreden());
-        scoreTest.woordGeraden();
-        for (int i = 0; i < aantalRondesOmBeurtTeOverschrijden; i++){
-            scoreTest.goedeBeurd();
+        assertTrue("Aantal beurten overschreden want ronde 1 is gehaald", scoreTest.turnsExceeded());
+        scoreTest.wordQuessed();
+        for (int i = 0; i < numberOfInvalidTurns; i++){
+            scoreTest.validTurn();
         }
-        assertTrue("Aantal beurten overschreden want ronde 1 en 2 is gehaald", scoreTest.beurdenOverschreden());
+        assertTrue("Aantal beurten overschreden want ronde 1 en 2 is gehaald", scoreTest.turnsExceeded());
     }
     @Test
-    void volgendeRondeTest(){
+    void nextRoundTest(){
         Score scoreTest = new Score();
-        int lengteRondeEenBezigOfEinde = 0;
-        assertEquals(scoreTest.volgendeRonde(), lengteRondeEenBezigOfEinde);
-        scoreTest.woordGeraden();
-        int lengteRondeEenGehaald = 6;
-        assertEquals(scoreTest.volgendeRonde(), lengteRondeEenGehaald);
-        scoreTest.woordGeraden();
-        int lengteRondeTweeGehaald = 7;
-        assertEquals(scoreTest.volgendeRonde(), lengteRondeTweeGehaald);
-        scoreTest.woordGeraden();
-        assertEquals(scoreTest.volgendeRonde(), lengteRondeEenBezigOfEinde);
+        int lengthRoundOneActiveOrEnd = 0;
+        assertEquals(scoreTest.nextRound(), lengthRoundOneActiveOrEnd);
+        scoreTest.wordQuessed();
+        int lengthRoundOneAchieved = 6;
+        assertEquals(scoreTest.nextRound(), lengthRoundOneAchieved);
+        scoreTest.wordQuessed();
+        int lengthRoundTwoAchieved = 7;
+        assertEquals(scoreTest.nextRound(), lengthRoundTwoAchieved);
+        scoreTest.wordQuessed();
+        assertEquals(scoreTest.nextRound(), lengthRoundOneActiveOrEnd);
     }
 
 }

@@ -10,12 +10,12 @@ public class LingoServiceTest {
     void currentGameActiveTest(){
         LingoService lingoService = new LingoService();
 
-        assertFalse(lingoService.currentGameActive());//Er is nog geen game actief
+        assertFalse(lingoService.currentGameActive());//No game active
 
         lingoService.createGame("Jantje", "zegel");
-        assertTrue(lingoService.currentGameActive());// Nu is er wel een game actief
+        assertTrue(lingoService.currentGameActive());// One game active
 
         lingoService.clearCurrentGame();
-        assertFalse(lingoService.currentGameActive());//Er is nog geen game actief want hij is net geleegd
+        assertFalse(lingoService.currentGameActive());//No game active because active game got cleared
     }
 }

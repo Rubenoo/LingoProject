@@ -1,6 +1,5 @@
 package nl.hu.vkbep.example.lingo.game.core.domain;
 
-import nl.hu.vkbep.example.lingo.game.core.domain.LingoWord;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,20 +10,20 @@ public class LingoWordTest {
     @Test
     void validateInputWordTest(){
         LingoWord lingoWordTest = new LingoWord("zegel", "Jantje");
-        String correctWoordRondenEen = "water";
-        String incorrectWoordRondenEen = "wAt3!";
-        assertTrue(lingoWordTest.validateInputWord(correctWoordRondenEen));
-        assertFalse(lingoWordTest.validateInputWord(incorrectWoordRondenEen));
-        lingoWordTest.nieuweRonde("cabine");
-        String correctWoordRondenTwee = "waters";
-        String incorrectWoordRondenTwee = "wAt3!s";
-        assertTrue(lingoWordTest.validateInputWord(correctWoordRondenTwee));
-        assertFalse(lingoWordTest.validateInputWord(incorrectWoordRondenTwee));
-        lingoWordTest.nieuweRonde("aankoop");
-        String correctWoordRondenDrie = "baarden";
-        String incorrectWoordRondenDrie = "bAa!d3s";
-        assertTrue(lingoWordTest.validateInputWord(correctWoordRondenDrie));
-        assertFalse(lingoWordTest.validateInputWord(incorrectWoordRondenDrie));
+        String validWordRoundOne = "water";
+        String invalidWordRoundOne = "wAt3!";
+        assertTrue(lingoWordTest.validateInputWord(validWordRoundOne));
+        assertFalse(lingoWordTest.validateInputWord(invalidWordRoundOne));
+        lingoWordTest.newRound("cabine");
+        String validWordRoundTwo = "waters";
+        String invalidWordRoundTwo = "wAt3!s";
+        assertTrue(lingoWordTest.validateInputWord(validWordRoundTwo));
+        assertFalse(lingoWordTest.validateInputWord(invalidWordRoundTwo));
+        lingoWordTest.newRound("aankoop");
+        String validWordRoundThree = "baarden";
+        String invalidWordRoundThree = "bAa!d3s";
+        assertTrue(lingoWordTest.validateInputWord(validWordRoundThree));
+        assertFalse(lingoWordTest.validateInputWord(invalidWordRoundThree));
     }
     @Test
     void generateFeedbackTest(){

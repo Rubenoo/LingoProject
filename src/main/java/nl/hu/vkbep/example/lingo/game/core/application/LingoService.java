@@ -20,8 +20,8 @@ public class LingoService {
         return currentGame.play(word);
     }
 
-    public String nieuweRonde(String word){
-        return currentGame.nieuweRonde(word);
+    public String newRound(String word){
+        return currentGame.newRound(word);
     }
 
     public Score getScore(){
@@ -32,8 +32,8 @@ public class LingoService {
         return currentGame != null;
     }
 
-    public int volgendeRonde(){
-        return currentGame.volgendeRonde();
+    public int nextRound(){
+        return currentGame.nextRound();
     }
 
     public void clearCurrentGame(){

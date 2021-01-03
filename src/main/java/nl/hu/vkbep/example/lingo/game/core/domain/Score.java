@@ -10,16 +10,16 @@ public class Score {
     private Long id;
     private String name;
     private int score = 0;
-    private int beurtenTotaal = 0;
-    private int beurtenRondenEen;
-    private int beurtenRondenTwee;
-    private int beurtenRondenDrie;
-    private int lengteVolgendeRonden = 0;
-    private boolean rondenEenGehaald = false;//6 letter woord
-    private boolean rondenTweeGehaald = false;//7 letter woord
-    private boolean rondenDrieGehaald = false;
+    private int totelTurns = 0;
+    private int turnsRoundOne;
+    private int turnsRoundTwo;
+    private int turnRoundThree;
+    private int lengthNextRound = 0;
+    private boolean roundOneAchieved = false;//6 letter word
+    private boolean roundTwoAchieved = false;//7 letter word
+    private boolean roundThreeAchieved = false;
     @Transient
-    private boolean rondenBezig = true;
+    private boolean roundActive = true;
 
     public Score (String name){
         this.name = name;
@@ -28,65 +28,65 @@ public class Score {
     public Score() {
     }
 
-    public boolean beurdenOverschreden(){
-        return (beurtenTotaal >= 5 && !rondenEenGehaald) || (rondenEenGehaald && !rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen) >= 5) || (rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen - beurtenRondenTwee) >= 5);
+    public boolean turnsExceeded(){
+        return (totelTurns >= 5 && !roundOneAchieved) || (roundOneAchieved && !roundTwoAchieved && (totelTurns - turnsRoundOne) >= 5) || (roundTwoAchieved && (totelTurns - turnsRoundOne - turnsRoundTwo) >= 5);
     }
 
-    public void woordGeraden(){
-        if (!rondenEenGehaald){
-            beurtenRondenEen = beurtenTotaal;
-            rondenEenGehaald = true;
-            rondenBezig = false;
-        }else if(!rondenTweeGehaald){
-            beurtenRondenTwee = beurtenTotaal - beurtenRondenEen;
-            rondenTweeGehaald = true;
-            rondenBezig = false;
+    public void wordQuessed(){
+        if (!roundOneAchieved){
+            turnsRoundOne = totelTurns;
+            roundOneAchieved = true;
+            roundActive = false;
+        }else if(!roundTwoAchieved){
+            turnsRoundTwo = totelTurns - turnsRoundOne;
+            roundTwoAchieved = true;
+            roundActive = false;
         }else{
-            beurtenRondenDrie = beurtenTotaal - beurtenRondenEen - beurtenRondenDrie;
-            rondenDrieGehaald = true;
-            rondenBezig = false;
+            turnRoundThree = totelTurns - turnsRoundOne - turnRoundThree;
+            roundThreeAchieved = true;
+            roundActive = false;
         }
     }
 
-    public int volgendeRonde(){
-        if(rondenTweeGehaald && !rondenBezig && !rondenDrieGehaald){
-            lengteVolgendeRonden = 7;
+    public int nextRound(){
+        if(roundTwoAchieved && !roundActive && !roundThreeAchieved){
+            lengthNextRound = 7;
         }
-        else if (rondenEenGehaald && !rondenBezig && !rondenDrieGehaald){
-            lengteVolgendeRonden = 6;
+        else if (roundOneAchieved && !roundActive && !roundThreeAchieved){
+            lengthNextRound = 6;
         }else{
-            lengteVolgendeRonden = 0;
+            lengthNextRound = 0;
         }
-        return lengteVolgendeRonden;
+        return lengthNextRound;
     }
 
-    public void volgendeRondeGestart(){
-        lengteVolgendeRonden = 0;
-        rondenBezig = true;
+    public void nextRoundStarted(){
+        lengthNextRound = 0;
+        roundActive = true;
     }
 
     public String getScores(){
-        String result = this.name + ", je scoren is: " + this.score + "\nJe heb totaal: " + this.beurtenTotaal + " beurten gehad\n";
-        if (!rondenEenGehaald){
+        String result = this.name + ", je scoren is: " + this.score + "\nJe heb totaal: " + this.totelTurns + " beurten gehad\n";
+        if (!roundOneAchieved){
             result += "Je hebt geen ronden gehaald :(";
-        }else if(!rondenTweeGehaald){
-            result += "Je hebt ronden 1 gehaald in " + beurtenRondenEen + " beurten";
-        }else if (!rondenDrieGehaald){
-            result += "Je hebt ronden 1 gehaald in " + beurtenRondenEen + " beurten\nJe hebt ronden 2 gehaald in " + beurtenRondenTwee + " beurten";
+        }else if(!roundTwoAchieved){
+            result += "Je hebt ronden 1 gehaald in " + turnsRoundOne + " beurten";
+        }else if (!roundThreeAchieved){
+            result += "Je hebt ronden 1 gehaald in " + turnsRoundOne + " beurten\nJe hebt ronden 2 gehaald in " + turnsRoundTwo + " beurten";
         }else{
-            result += "Je hebt ronden 1 gehaald in " + beurtenRondenEen + " beurten\nJe hebt ronden 2 gehaald in " + beurtenRondenTwee + " beurten\nJe hebt ronden 3 gehaald in " + beurtenRondenDrie + " beurten";
+            result += "Je hebt ronden 1 gehaald in " + turnsRoundOne + " beurten\nJe hebt ronden 2 gehaald in " + turnsRoundTwo + " beurten\nJe hebt ronden 3 gehaald in " + turnRoundThree + " beurten";
         }
         return result;
     }
 
-    public boolean spelGewonnen(){
-        return rondenDrieGehaald;
+    public boolean gameFinished(){
+        return roundThreeAchieved;
     }
-    public void ongeldigeBeurd(){
-        beurtenTotaal++;
+    public void invalidTurn(){
+        totelTurns++;
     }
-    public void goedeBeurd(){
+    public void validTurn(){
         score++;
-        beurtenTotaal++;
+        totelTurns++;
     }
 }

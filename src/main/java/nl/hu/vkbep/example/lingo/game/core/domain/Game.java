@@ -32,11 +32,11 @@ public class Game {
         return this.word.play(word);
     }
 
-    public String nieuweRonde(String word){
-        return this.word.nieuweRonde(word);
+    public String newRound(String word){
+        return this.word.newRound(word);
     }
 
-    public int volgendeRonde(){
-        return this.word.volgendeRonde();
+    public int nextRound(){
+        return this.word.nextRound();
     }
 }

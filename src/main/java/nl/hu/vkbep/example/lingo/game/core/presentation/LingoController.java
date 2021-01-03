@@ -30,8 +30,8 @@ public class LingoController {
     public String play(@RequestParam int key, @RequestParam String word) {
         if (!lingoService.authenticate(key)){
            return "Key komt niet overeen!";
-        }else if(lingoService.volgendeRonde() != 0){
-            return lingoService.nieuweRonde(this.wordService.getRandomWord(lingoService.volgendeRonde()));
+        }else if(lingoService.nextRound() != 0){
+            return lingoService.newRound(this.wordService.getRandomWord(lingoService.nextRound()));
         }
         return lingoService.play(word);
     }
