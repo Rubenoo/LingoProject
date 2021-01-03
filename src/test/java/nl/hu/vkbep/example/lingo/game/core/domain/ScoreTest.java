@@ -1,4 +1,4 @@
-package nl.hu.vkbep.example.lingo.game.core.application.domain;
+package nl.hu.vkbep.example.lingo.game.core.domain;
 
 import nl.hu.vkbep.example.lingo.game.core.domain.Score;
 import org.junit.jupiter.api.Test;
