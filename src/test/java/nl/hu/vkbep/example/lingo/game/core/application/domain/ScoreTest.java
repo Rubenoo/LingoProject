@@ -9,7 +9,7 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 public class ScoreTest {
     @Test
-    public void beurtOverschredenTestHappyPath(){
+    void beurtOverschredenTestHappyPath(){
         Score scoreTest = new Score();
         int aantalRondesOmBeurtNietTeOverschrijden = 4;
         for (int i = 0; i < aantalRondesOmBeurtNietTeOverschrijden; i++){
@@ -28,7 +28,7 @@ public class ScoreTest {
         assertFalse("Aantal beurten niet overschreden want ronde 1 en 2 is gehaald", scoreTest.beurdenOverschreden());
     }
     @Test
-    public void beurtOverschredenTestUnHappyPath(){
+    void beurtOverschredenTestUnHappyPath(){
         Score scoreTest = new Score();
         int aantalRondesOmBeurtTeOverschrijden = 5;
         for (int i = 0; i < aantalRondesOmBeurtTeOverschrijden; i++){
@@ -47,7 +47,7 @@ public class ScoreTest {
         assertTrue("Aantal beurten overschreden want ronde 1 en 2 is gehaald", scoreTest.beurdenOverschreden());
     }
     @Test
-    public void volgendeRondeTest(){
+    void volgendeRondeTest(){
         Score scoreTest = new Score();
         int lengteRondeEenBezigOfEinde = 0;
         assertEquals(scoreTest.volgendeRonde(), lengteRondeEenBezigOfEinde);

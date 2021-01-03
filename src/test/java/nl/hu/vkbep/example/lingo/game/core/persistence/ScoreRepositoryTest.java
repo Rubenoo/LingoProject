@@ -22,7 +22,7 @@ class ScoreRepositoryTest {
     private ScoreRepository scoreRepository;
 
     @Test
-    public void testSave(){
+    void testSave(){
         Score scoreTest = new Score("Ruben");
 
         List<Score> scores = (List<Score>) scoreRepository.findAll();

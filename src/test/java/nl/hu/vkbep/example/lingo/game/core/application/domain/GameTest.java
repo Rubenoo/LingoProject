@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class GameTest {
     @Test
-    public void authenticateTest(){
+    void authenticateTest(){
         Game gameTest = new Game("Jantje", "zegel");
         int correctKey = gameTest.getIntKey();
         int incorrectKey = 1;

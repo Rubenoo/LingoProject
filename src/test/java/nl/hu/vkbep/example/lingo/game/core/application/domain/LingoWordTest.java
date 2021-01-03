@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LingoWordTest {
     @Test
-    public void validateInputWordTest(){
+    void validateInputWordTest(){
         LingoWord lingoWordTest = new LingoWord("zegel", "Jantje");
         String correctWoordRondenEen = "water";
         String incorrectWoordRondenEen = "wAt3!";
@@ -27,7 +27,7 @@ public class LingoWordTest {
         assertFalse(lingoWordTest.validateInputWord(incorrectWoordRondenDrie));
     }
     @Test
-    public void generateFeedbackTest(){
+    void generateFeedbackTest(){
         LingoWord lingoWordTest = new LingoWord("zegel", "Jantje");
         lingoWordTest.play("zegel");
         List<String> actualFeedback = lingoWordTest.generateFeedback();
@@ -51,7 +51,7 @@ public class LingoWordTest {
         assertEquals(actualFeedback,expectedFeedback);
     }
     @Test
-    public void getFirstCharacterOfWordTest(){
+    void getFirstCharacterOfWordTest(){
         LingoWord lingoWordTest = new LingoWord("zegel", "Jantje");
         Character expectedFirstCharacter = 'z';
         assertEquals(lingoWordTest.getFirstCharacterOfWord(), expectedFirstCharacter);
