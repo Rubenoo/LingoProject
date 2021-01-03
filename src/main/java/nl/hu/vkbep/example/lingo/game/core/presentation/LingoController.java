@@ -1,4 +1,4 @@
-package nl.hu.vkbep.example.lingo.game.infrastructure.driver.web;
+package nl.hu.vkbep.example.lingo.game.core.presentation;
 
 
 import nl.hu.vkbep.example.lingo.game.core.application.LingoService;
