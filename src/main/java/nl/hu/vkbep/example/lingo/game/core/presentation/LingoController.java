@@ -57,11 +57,6 @@ public class LingoController {
 
     @GetMapping("/scores")
     public String allScores(){
-        String result = "Alle scores: \n";
-        List<Score> allScores = scoreService.getAllScores();
-        for(Score s : allScores){
-            result += s.getScores() + "\n";
-        }
-        return result;
+        return "Alle scores: \n" + scoreService.getStringAllScores();
     }
 }

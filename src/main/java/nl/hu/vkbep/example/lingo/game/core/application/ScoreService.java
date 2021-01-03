@@ -14,6 +14,15 @@ public class ScoreService {
         return (List<Score>) repository.findAll();
     }
 
+    public String getStringAllScores(){
+        List<Score> allScores = this.getAllScores();
+        String result = "";
+        for(Score s : allScores){
+            result += s.getScores() + "\n";
+        }
+        return result;
+    }
+
     public void saveScore(Score sc){
         repository.save(sc);
     }
