@@ -21,6 +21,7 @@ public class LingoWord {
             wordArray.add(c);
         }
     }
+
     public Score getScore(){
         return score;
     }
@@ -37,6 +38,7 @@ public class LingoWord {
         score.volgendeRondeGestart();
         return "Deze ronden word er met " + wordLength + " letters gespeeld.\nDe eerste letter is: " + getFirstCharacterOfWord();
     }
+
     public String play(String word) {
         if (validateInputWord(word) && validateTime() && !score.beurdenOverschreden() && !score.spelGewonnen()){
             setInputWord(word);
@@ -58,19 +60,23 @@ public class LingoWord {
 
         }
     }
+
     public boolean validateInputWord(String wd){
         return wd.matches("^[a-z]{5,7}$") && wordLength == wd.length();
-    };
+    }
+
     public boolean validateTime(){
         return LocalDateTime.now().isBefore(localDateTimeLastPlay.plusSeconds(10));
-    };
+    }
+
     public boolean setInputWord(String inputWordString){
         inputWord.clear();
         for(char c : inputWordString.toCharArray()){
             inputWord.add(c);
         }
         return true;
-    };
+    }
+
     public List<String> generateFeedback(){
         int index = 0;
         inputWordFeedback.clear();
@@ -85,7 +91,8 @@ public class LingoWord {
             index++;
         }
         return inputWordFeedback;
-    };
+    }
+
     public String getFeedback(){
         int index = 0;
         String resultString = "";
@@ -102,6 +109,7 @@ public class LingoWord {
         }
         return resultString;
     }
+
     public Character getFirstCharacterOfWord(){
         return wordArray.get(0);
     }

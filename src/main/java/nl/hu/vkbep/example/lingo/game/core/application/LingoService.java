@@ -10,10 +10,12 @@ public class LingoService {
     public String createGame(String name, String word){
         currentGame = new Game(name ,word);
         return currentGame.getKey();
-    };
+    }
+
     public boolean authenticate(int givenKey){
         return currentGame.authenticate(givenKey);
     }
+
     public String play(String word){
         return currentGame.play(word);
     }
@@ -21,9 +23,11 @@ public class LingoService {
     public String nieuweRonde(String word){
         return currentGame.nieuweRonde(word);
     }
+
     public Score getScore(){
         return currentGame.getScore();
     }
+
     public boolean currentGameActive(){
         return currentGame != null;
     }
@@ -31,6 +35,7 @@ public class LingoService {
     public int volgendeRonde(){
         return currentGame.volgendeRonde();
     }
+
     public void clearCurrentGame(){
         currentGame = null;
     }

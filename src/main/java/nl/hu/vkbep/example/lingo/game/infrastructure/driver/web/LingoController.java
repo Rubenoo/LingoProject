@@ -19,7 +19,6 @@ public class LingoController {
     private final LingoService lingoService;
     private final ScoreService scoreService;
 
-
     public LingoController(WordService wordService, LingoService lingoService, ScoreService scoreService) {
         this.wordService = wordService;
         this.lingoService = lingoService;
@@ -30,6 +29,7 @@ public class LingoController {
     public String startGame(@RequestParam String name) {
         return lingoService.createGame(name, this.wordService.getRandomWord(5));
     }
+
     @GetMapping("/play")
     public String play(@RequestParam int key, @RequestParam String word) {
         if (!lingoService.authenticate(key)){
@@ -39,6 +39,7 @@ public class LingoController {
         }
         return lingoService.play(word);
     }
+
     @GetMapping("/save")
     public String saveCurrentGame(@RequestParam int key) {
         if(lingoService.currentGameActive())
@@ -53,6 +54,7 @@ public class LingoController {
             return "Er is geen actief spel die opgeslagen kan worden!";
         }
     }
+
     @GetMapping("/scores")
     public String allScores(){
         String result = "Alle scores: \n";
@@ -62,5 +64,4 @@ public class LingoController {
         }
         return result;
     }
-
 }

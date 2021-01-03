@@ -13,8 +13,8 @@ public class ScoreService {
     public List<Score> getAllScores(){
         return (List<Score>) repository.findAll();
     }
+
     public void saveScore(Score sc){
         repository.save(sc);
     }
-
 }

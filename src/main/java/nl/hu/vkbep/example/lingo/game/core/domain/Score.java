@@ -20,23 +20,24 @@ public class Score {
     private boolean rondenDrieGehaald = false;
     @Transient
     private boolean rondenBezig = true;
+
     public Score (String name){
         this.name = name;
     }
 
     public Score() {
-
     }
 
     public boolean beurdenOverschreden(){
         return (beurtenTotaal >= 5 && !rondenEenGehaald) || (rondenEenGehaald && !rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen) >= 5) || (rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen - beurtenRondenTwee) >= 5);
     }
+
     public void woordGeraden(){
         if (!rondenEenGehaald){
             beurtenRondenEen = beurtenTotaal;
             rondenEenGehaald = true;
             rondenBezig = false;
-        }else if(rondenEenGehaald && !rondenTweeGehaald){
+        }else if(!rondenTweeGehaald){
             beurtenRondenTwee = beurtenTotaal - beurtenRondenEen;
             rondenTweeGehaald = true;
             rondenBezig = false;
@@ -46,6 +47,7 @@ public class Score {
             rondenBezig = false;
         }
     }
+
     public int volgendeRonde(){
         if(rondenTweeGehaald && !rondenBezig && !rondenDrieGehaald){
             lengteVolgendeRonden = 7;
@@ -57,23 +59,26 @@ public class Score {
         }
         return lengteVolgendeRonden;
     }
+
     public void volgendeRondeGestart(){
         lengteVolgendeRonden = 0;
         rondenBezig = true;
     }
+
     public String getScores(){
         String result = this.name + ", je scoren is: " + this.score + "\nJe heb totaal: " + this.beurtenTotaal + " beurten gehad\n";
         if (!rondenEenGehaald){
             result += "Je hebt geen ronden gehaald :(";
-        }else if(rondenEenGehaald && !rondenTweeGehaald){
+        }else if(!rondenTweeGehaald){
             result += "Je hebt ronden 1 gehaald in " + beurtenRondenEen + " beurten";
-        }else if (rondenTweeGehaald && !rondenDrieGehaald){
+        }else if (!rondenDrieGehaald){
             result += "Je hebt ronden 1 gehaald in " + beurtenRondenEen + " beurten\nJe hebt ronden 2 gehaald in " + beurtenRondenTwee + " beurten";
         }else{
             result += "Je hebt ronden 1 gehaald in " + beurtenRondenEen + " beurten\nJe hebt ronden 2 gehaald in " + beurtenRondenTwee + " beurten\nJe hebt ronden 3 gehaald in " + beurtenRondenDrie + " beurten";
         }
         return result;
     }
+
     public boolean spelGewonnen(){
         return rondenDrieGehaald;
     }
