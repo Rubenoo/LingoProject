@@ -29,15 +29,7 @@ public class Score {
     }
 
     public boolean beurdenOverschreden(){
-        if(beurtenTotaal >= 5 && !rondenEenGehaald){
-            return true;
-        }else if(rondenEenGehaald && (beurtenTotaal - beurtenRondenEen) >= 5){
-            return true;
-        }else if (rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen - beurtenRondenTwee) >= 5){
-            return true;
-        }else{
-            return false;
-        }
+        return (beurtenTotaal >= 5 && !rondenEenGehaald) || (rondenEenGehaald && !rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen) >= 5) || (rondenTweeGehaald && (beurtenTotaal - beurtenRondenEen - beurtenRondenTwee) >= 5);
     }
     public void woordGeraden(){
         if (!rondenEenGehaald){
@@ -51,13 +43,14 @@ public class Score {
         }else{
             beurtenRondenDrie = beurtenTotaal - beurtenRondenEen - beurtenRondenDrie;
             rondenDrieGehaald = true;
+            rondenBezig = false;
         }
     }
     public int volgendeRonde(){
-        if(rondenTweeGehaald && !rondenBezig){
+        if(rondenTweeGehaald && !rondenBezig && !rondenDrieGehaald){
             lengteVolgendeRonden = 7;
         }
-        else if (rondenEenGehaald && !rondenBezig){
+        else if (rondenEenGehaald && !rondenBezig && !rondenDrieGehaald){
             lengteVolgendeRonden = 6;
         }else{
             lengteVolgendeRonden = 0;

@@ -21,6 +21,7 @@ public class Game {
     public String getKey(){
         return "Hallo " + name + " , jouw key is: " + key + ", succes!\n De eerste letter van jouw woord is: " + word.getFirstCharacterOfWord().toString();
     };
+    public int getIntKey(){return key;}
     public String play(String word){
         return this.word.play(word);
     };

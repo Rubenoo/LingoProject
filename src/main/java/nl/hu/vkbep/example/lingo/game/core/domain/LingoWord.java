@@ -2,6 +2,7 @@ package nl.hu.vkbep.example.lingo.game.core.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LingoWord {
     private String word;
@@ -70,7 +71,7 @@ public class LingoWord {
         }
         return true;
     };
-    public void generateFeedback(){
+    public List<String> generateFeedback(){
         int index = 0;
         inputWordFeedback.clear();
         for(char c : inputWord){
@@ -83,14 +84,14 @@ public class LingoWord {
             }
             index++;
         }
+        return inputWordFeedback;
     };
     public String getFeedback(){
         int index = 0;
-        String resultString;
-        String resultString2 = "";
+        String resultString = "";
         System.out.println("Het woord is : " + word.toString());
         for (Character c : inputWord) {
-            resultString2 =  resultString2 + "Gegeven letter: " + c.toString() + " , feedback: " + inputWordFeedback.get(index) + "\n";
+            resultString =  resultString + "Gegeven letter: " + c.toString() + " , feedback: " + inputWordFeedback.get(index) + "\n";
             index++;
         }
         inputWordFeedback.removeIf(feedback -> feedback.equals("Correct"));
@@ -99,7 +100,7 @@ public class LingoWord {
             score.woordGeraden();
             return "Gefeliciteerd, het woord was: " + word + ", en dit heb je goed geraden! Op naar de volgende ronden!";
         }
-        return resultString2;
+        return resultString;
     }
     public Character getFirstCharacterOfWord(){
         return wordArray.get(0);
