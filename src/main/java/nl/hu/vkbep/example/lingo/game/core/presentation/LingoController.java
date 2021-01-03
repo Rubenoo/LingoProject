@@ -1,16 +1,12 @@
 package nl.hu.vkbep.example.lingo.game.core.presentation;
 
-
 import nl.hu.vkbep.example.lingo.game.core.application.LingoService;
 import nl.hu.vkbep.example.lingo.game.core.application.ScoreService;
-import nl.hu.vkbep.example.lingo.game.core.domain.Score;
 import nl.hu.vkbep.example.lingo.words.core.application.WordService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/lingo")
