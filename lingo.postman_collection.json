@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "ed4f8c43-8324-4e9a-a413-be23e4fa51ab",
+		"name": "lingo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get random word",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lingo/start?name=Ruben",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lingo",
+						"start"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ruben"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create game heroku",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lingo/start?name=Ruben",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lingo",
+						"start"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ruben"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "play game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lingo/play?word=kader",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lingo",
+						"play"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "kader"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "play game Heroku",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lingotrainerruben.herokuapp.com/lingo/play?word=kader",
+					"protocol": "https",
+					"host": [
+						"lingotrainerruben",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"lingo",
+						"play"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "kader"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lingo/save?key=123",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lingo",
+						"save"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save game Heroku",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lingotrainerruben.herokuapp.com/lingo/save?key=123",
+					"protocol": "https",
+					"host": [
+						"lingotrainerruben",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"lingo",
+						"save"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all scores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lingo/save?key=123",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lingo",
+						"save"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all scores Heroku",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lingotrainerruben.herokuapp.com/lingo/save?key=123",
+					"protocol": "https",
+					"host": [
+						"lingotrainerruben",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"lingo",
+						"save"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
