@@ -14,6 +14,9 @@ public class WordService {
         this.random = random;
         this.reader = reader;
     }
+    public boolean validWord(String word){
+        return this.reader.readWords().anyMatch(word::contains);
+    }
 
     public String getRandomWord(int length) {
         if (length < 5 || length > 7) {

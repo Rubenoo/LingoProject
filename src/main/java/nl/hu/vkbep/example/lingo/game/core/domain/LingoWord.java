@@ -69,6 +69,11 @@ public class LingoWord {
         return LocalDateTime.now().isBefore(localDateTimeLastPlay.plusSeconds(10));
     }
 
+    public void invalidTurn(){
+        localDateTimeLastPlay = LocalDateTime.now();
+        this.score.invalidTurn();;
+    }
+
     public boolean setInputWord(String inputWordString){
         inputWord.clear();
         for(char c : inputWordString.toCharArray()){

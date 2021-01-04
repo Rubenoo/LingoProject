@@ -28,6 +28,10 @@ public class LingoService {
         return currentGame.getScore();
     }
 
+    public void InvalidTurn(){
+        this.currentGame.invalidTurn();
+    }
+
     public boolean currentGameActive(){
         return currentGame != null;
     }

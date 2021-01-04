@@ -32,6 +32,9 @@ public class LingoController {
            return "Key komt niet overeen!";
         }else if(lingoService.nextRound() != 0){
             return lingoService.newRound(this.wordService.getRandomWord(lingoService.nextRound()));
+        }else if (!wordService.validWord(word)){
+            lingoService.InvalidTurn();
+            return "Geen geldig woord gegeven!";
         }
         return lingoService.play(word);
     }

@@ -28,6 +28,10 @@ public class Game {
 
     public int getIntKey(){return key;}
 
+    public void invalidTurn(){
+        this.word.invalidTurn();
+    }
+
     public String play(String word){
         return this.word.play(word);
     }
